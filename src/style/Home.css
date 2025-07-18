@@ -1,0 +1,48 @@
+.home-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: calc(100vh - 70px); /* TopBar is 70px */
+  transition: grid-template-columns 0.3s ease;
+}
+
+.main-content {
+  min-width: 0;
+  min-height: 100%;
+  overflow-x: auto;
+  padding: 24px 24px 50px 50px;
+}
+
+.home-layout.collapsed {
+  grid-template-columns: 80px 1fr;
+}
+
+@media (max-width: 900px) {
+  .home-layout {
+    grid-template-columns: 80px 1fr;
+  }
+}
+
+.status-card {
+  padding: 18px;
+  max-width: 300px;
+  min-width: 200px;
+  border-radius: 8px;
+}
+
+.ticket-status-cards {
+  display: flex;
+  margin: 0px;
+  gap: 20px;
+}
+
+.completed-card {
+  background-color: #22c55e;
+}
+
+.in-progress-card {
+  background-color: #facc15;
+}
+
+.backlog-card {
+  background-color: #ef4444;
+}
