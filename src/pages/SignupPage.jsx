@@ -11,8 +11,10 @@ function SignupPage() {
           <p>Your all-in-one space to plan, collaborate, and stay on track.</p>
           <p>Log in or create an account to get started.</p>
           <div className="signup-section">
-            <p>Don't have an account?</p>
-            <button className="btn btn-signup" onClick={() => navigate("/")}>Login</button>
+            <p>Already have an account?</p>
+            <button className="btn btn-signup" onClick={() => navigate("/")}>
+              Login
+            </button>
           </div>
         </div>
         <div className="form-section">
