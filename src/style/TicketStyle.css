@@ -1,0 +1,11 @@
+.ticket-columns {
+  display: flex;
+  gap: 10px;
+}
+
+.column {
+  border: 1px solid;
+  padding: 10px 60px 10px 60px;
+  border-radius: 8px;
+  background-color: #1e1e1e;
+}
