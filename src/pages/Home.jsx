@@ -22,11 +22,11 @@ function Home() {
         <SideBar collapsed={collapsed} />
         <main className="main-content">
           <Routes>
-            <Route path="/home/dashboard" element={<Dashboard />} />
-            <Route path="/home/workload" element={<Workload />} />
-            <Route path="/home/tickets" element={<Tickets />} />
-            <Route path="/home/clients" element={<Clients />} />
-            <Route path="/home/settings" element={<Settings />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="workload" element={<Workload />} />
+            <Route path="tickets" element={<Tickets />} />
+            <Route path="clients" element={<Clients />} />
+            <Route path="settings" element={<Settings />} />
           </Routes>
         </main>
       </div>

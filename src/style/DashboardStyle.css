@@ -143,3 +143,30 @@
 .table-container th:not(:last-child) {
   border-right: 16px solid transparent;
 }
+
+
+.create-ticket-popup {
+  margin: 10px 5% 10px 5%;
+  width: 60%;
+  height: 50%;
+  background: #191919;
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+.create-ticket-form {
+  width: 50%;
+  height: 45%;
+  background: #191919;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: left; */
+  /* z-index: 2; */
+}
