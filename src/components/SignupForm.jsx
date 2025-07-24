@@ -1,29 +1,55 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function SignupForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [name, setName] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  function handleSubmit(e) {
+  function confirmPasswordMatch() {
+    return password === confirmPassword;
+  }
+
+  async function handleSubmit(e) {
     e.preventDefault();
     if (!confirmPasswordMatch()) {
       setError("Passwords do not match");
       return;
     }
     setError("");
-    // Handle signup logic here
-  }
-
-  function confirmPasswordMatch() {
-    return password === confirmPassword;
+    try {
+      const res = await fetch("http://localhost:5005/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password, name }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || "Signup failed");
+      // Optionally auto-login or redirect to login page
+      navigate("/");
+    } catch (err) {
+      setError(err.message);
+    }
   }
 
   return (
     <div className="login-form">
       <h3 className="form-heading">Sign Up</h3>
       <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <input
+            type="text"
+            className="form-control padding"
+            id="signupName"
+            placeholder="Name"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            required
+          />
+        </div>
         <div className="form-group">
           <input
             type="email"
