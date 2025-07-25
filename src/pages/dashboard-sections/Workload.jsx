@@ -5,10 +5,16 @@ import { useEffect } from "react";
 
 function Workload() {
 
+  const { reloadTickets } = useTickets();
+
+  useEffect(() => {
+    reloadTickets();
+  }, [reloadTickets]);
+
   return (
     <div>
       <h2>Workload</h2>
-      <CreateButton />
+      <CreateButton onTicketCreated={reloadTickets} />
       <TicketCounters />
     </div>
   );

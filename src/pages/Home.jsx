@@ -1,6 +1,6 @@
 import { useState } from "react";
-import SideBar from "../components/Sidebar";
-import TopBar from "../components/TopBar";
+import SideBar from "../components/SideBar.jsx";
+import TopBar from "../components/TopBar.jsx";
 import Dashboard from "./dashboard-sections/Dashboard";
 import Workload from "./dashboard-sections/Workload";
 import Tickets from "./dashboard-sections/Tickets";

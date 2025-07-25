@@ -1,14 +1,13 @@
-import "./App.css";
-import "./style/LoginPageStyle.css";
-import "./style/DashboardStyle.css";
-import "./style/ClientStyle.css";
-import "./style/TicketStyle.css";
+
+import "./style/loginPageStyle.css";
+import "./style/dashboardStyle.css";
+import "./style/clientStyle.css";
+import "./style/ticketStyle.css";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import RequireAuth from "./contexts/RequireAuth";
-
 function App() {
   return (
     <Routes>

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
-import fetchTickets from "../services/fetchTickets";
 import PropTypes from "prop-types";
 
 function TicketForm({ onTicketCreated }) {
@@ -122,7 +121,7 @@ function CreateButton({ onTicketCreated }) {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
-            height="20"
+            height="15"
             fill="currentColor"
             className="bi bi-plus-square-fill"
             viewBox="0 0 16 16"

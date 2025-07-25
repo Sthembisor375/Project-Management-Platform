@@ -1,12 +1,60 @@
 .ticket-columns {
   display: flex;
   gap: 10px;
+  margin-top: 20px;
 }
 
 .column {
-  border: 1px solid;
+  border: 1px solid #555;
   width: 100%; 
   padding: 10px 10px 10px 10px;
   border-radius: 8px;
   background-color: #1e1e1e;
+  min-height: 200px;
+}
+
+.column h4 {
+  color: #fff;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.ticket-card {
+  margin-bottom: 8px;
+  background: #232323;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+  border: 1px solid #333;
+}
+
+.ticket-card:hover {
+  background: #2a2a2a;
+}
+
+.ticket-title {
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.ticket-description {
+  font-size: 0.8em;
+  color: #ccc;
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+.ticket-client {
+  font-size: 0.9em;
+  color: #ccc;
+  margin-top: 4px;
+  line-height: 1.3;
+  padding: 4px;
+}
+
+.no-tickets {
+  color: #aaa;
+  text-align: center;
+  font-style: italic;
 }

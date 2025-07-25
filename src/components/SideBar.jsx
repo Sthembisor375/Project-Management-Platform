@@ -1,4 +1,4 @@
-import "../style/SideBarStyle.css";
+import "../style/sideBarStyle.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { usePage } from "../contexts/PageContext.jsx";
