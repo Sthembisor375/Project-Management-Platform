@@ -4,12 +4,15 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 import { PageProvider } from './contexts/PageContext.jsx'
+import { TicketsProvider } from './contexts/TicketsContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <PageProvider>
-        <App />
+        <TicketsProvider>
+          <App />
+        </TicketsProvider>
       </PageProvider>
     </BrowserRouter>
   </StrictMode>,

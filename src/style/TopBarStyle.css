@@ -121,3 +121,8 @@
   border-radius: 0 0 0 12px;
   z-index: 11;
 }
+
+.topbar-logout-btn{
+  background-color: black;
+  border: 1px solid;
+}
