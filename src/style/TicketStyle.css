@@ -1,11 +1,87 @@
 .ticket-columns {
   display: flex;
   gap: 10px;
+  margin-top: 20px;
+  overflow-x: auto;
 }
 
 .column {
-  border: 1px solid;
-  padding: 10px 60px 10px 60px;
+  border: 1px solid #555;
+  width: 220px;
+  min-width: 220px;
+  max-width: 220px;
+  padding: 10px 10px 10px 10px;
   border-radius: 8px;
   background-color: #1e1e1e;
+  min-height: 200px;
+}
+
+.column h4 {
+  color: #fff;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.ticket-card {
+  margin-bottom: 8px;
+  background: #232323;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+  border: 1px solid #333;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ticket-card:hover {
+  background: #2a2a2a;
+}
+
+.ticket-title {
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.ticket-description {
+  font-size: 0.8em;
+  color: #ccc;
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+.ticket-client {
+  font-size: 0.9em;
+  color: #ccc;
+  margin-top: 4px;
+  line-height: 1.3;
+  padding: 4px;
+}
+
+.ticket-title,
+.ticket-description,
+.ticket-client {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  max-width: 100%;
+}
+
+/* If you want to allow wrapping instead, comment out the white-space: nowrap above and use: */
+/*
+.ticket-title, .ticket-description, .ticket-client {
+  word-break: break-word;
+  white-space: normal;
+}
+*/
+
+.no-tickets {
+  color: #aaa;
+  text-align: center;
+  font-style: italic;
+}
+
+.counter-number {
+  font-size: 1.8em;
 }

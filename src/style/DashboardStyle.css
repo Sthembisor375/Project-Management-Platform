@@ -13,6 +13,124 @@
   font-family: "Inter", sans-serif;
 }
 
+.dashboard-card {
+  background: #191919;
+  border: 2px solid #fff;
+  border-radius: 14px;
+  padding: 32px 32px 24px 32px;
+  margin-top: 24px;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+}
+
+.dashboard-card-title {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+.dashboard-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0;
+  margin-top: 12px;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 400;
+  padding: 16px 0 12px 0;
+  text-align: left;
+}
+
+.dashboard-table th {
+  border-bottom: 2px solid #fff;
+  font-weight: 400;
+}
+
+.dashboard-table td {
+  border-bottom: 1px solid #222;
+}
+
+.table {
+  border: 1px;
+  border-color: white;
+}
+
+.table-container {
+  border: 1px solid #555555;
+  border-radius: 14px;
+  padding: 24px;
+  background: #191919;
+  margin: 24px 80px 0 0;
+}
+
+/* Add column gap for dashboard table */
+.table-container table {
+  border-collapse: separate;
+  border-spacing: 0 0;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.table-container th,
+.table-container td {
+  word-break: break-word;
+  text-align: left;
+}
+
+.table-container td:not(:last-child),
+.table-container th:not(:last-child) {
+  border-right: 16px solid transparent;
+}
+
+.create-ticket-popup {
+  margin: 10px 5% 10px 5%;
+  width: auto;
+  height: auto;
+  max-width: 420px;
+  max-height: 90vh;
+  min-width: 720px;
+  min-height: 100px;
+  overflow-y: auto;
+  background: #191919;
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+.create-ticket-form {
+  width: 50%;
+  height: 45%;
+  background: #191919;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: left; */
+  /* z-index: 2; */
+}
+
+/* Dashboard ticket row clickable and separation styles */
+.dashboard-ticket-row {
+  border-bottom: 1px solid #444;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.dashboard-ticket-row:hover {
+  background: #2a2a2a;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+  cursor: pointer;
+}
+.dashboard-ticket-row:last-child td {
+  border-bottom: none !important;
+}
+
 .create-ticket-btn {
   position: relative;
   background: #fff;
@@ -71,95 +189,73 @@
   margin-left: 12px;
 }
 
-.dashboard-card {
-  background: #191919;
-  border: 2px solid #fff;
-  border-radius: 14px;
-  padding: 32px 32px 24px 32px;
-  margin-top: 24px;
-  color: #fff;
+/* Create Client Button Styling - matching Create Ticket Button */
+.create-client-btn {
+  position: relative;
+  background: #fff;
+  color: #232323;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
   font-family: "Inter", sans-serif;
-}
-
-.dashboard-card-title {
-  font-size: 2rem;
   font-weight: 400;
-  margin-bottom: 24px;
+  padding: 8px 14px 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  margin-bottom: 25px;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s;
+  z-index: 1;
 }
 
-.dashboard-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 0;
-  margin-top: 12px;
+.create-client-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  padding: 1px;
+  background: linear-gradient(90deg, #6366f1 0%, #f472b6 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
 }
 
-.dashboard-table th,
-.dashboard-table td {
-  color: #fff;
-  font-size: 1.3rem;
-  font-weight: 400;
-  padding: 16px 0 12px 0;
-  text-align: left;
+.create-client-btn > * {
+  position: relative;
+  z-index: 3;
 }
 
-.dashboard-table th {
-  border-bottom: 2px solid #fff;
-  font-weight: 400;
+.create-client-btn:hover {
+  box-shadow: 0 4px 24px rgba(99, 102, 241, 0.1);
+  transform: translateY(-2px);
 }
 
-.dashboard-table td {
-  border-bottom: 1px solid #222;
-}
-
-.table {
-  border: 1px;
-  border-color: white;
-}
-
-.table-container {
-  border: 1px solid #fff;
-  border-radius: 14px;
-  padding: 24px;
-  background: #191919;
-  margin: 24px 80px 0 0;
-}
-
-/* Add column gap for dashboard table */
-.table-container table {
-  border-collapse: separate;
-  border-spacing: 0 0;
-  table-layout: fixed;
-  width: 100%;
-}
-
-.table-container th,
-.table-container td {
-  word-break: break-word;
-  text-align: left;
-}
-
-.table-container td:not(:last-child),
-.table-container th:not(:last-child) {
-  border-right: 16px solid transparent;
-}
-
-
-.create-ticket-popup {
+.create-client-popup {
   margin: 10px 5% 10px 5%;
-  width: 60%;
-  height: 50%;
+  width: auto;
+  height: auto;
+  max-width: 420px;
+  max-height: 90vh;
+  min-width: 720px;
+  min-height: 100px;
+  overflow-y: auto;
   background: #191919;
   border: 1px solid;
   border-radius: 8px;
-  padding: 5px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 2;
 }
-.create-ticket-form {
+
+.create-client-form {
   width: 50%;
   height: 45%;
   background: #191919;
@@ -167,6 +263,4 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: left; */
-  /* z-index: 2; */
 }

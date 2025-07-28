@@ -13,6 +13,9 @@
   min-height: 100%;
   overflow-x: auto;
   padding: 24px 24px 0px 50px;
+  max-width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .home-layout.collapsed {
@@ -28,7 +31,7 @@
 .status-card {
   padding: 18px;
   max-width: 300px;
-  min-width: 200px;
+  min-width: 180px;
   border-radius: 8px;
 }
 
@@ -48,4 +51,12 @@
 
 .backlog-card {
   background-color: #ef4444;
+}
+
+.revisions-card {
+  background-color: #00b7eb;
+}
+
+.client-review-card {
+  background-color: #0052ffff;
 }
