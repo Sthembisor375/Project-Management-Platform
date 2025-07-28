@@ -1,8 +1,19 @@
 import LoginForm from "../components/LoginForm";
 import { useNavigate } from "react-router-dom";
+import { useTickets } from "../contexts/TicketsContext";
+import { useClients } from "../contexts/ClientsContext";
 
 function LoginPage() {
   const navigate = useNavigate();
+  const { reloadTickets } = useTickets();
+  const { reloadClients } = useClients();
+
+  const handleLoginSuccess = () => {
+    // Trigger reload of all contexts after successful login
+    reloadTickets();
+    reloadClients();
+  };
+
   return (
     <>
       <div className="login-page">
@@ -21,7 +32,7 @@ function LoginPage() {
           </div>
         </div>
         <div className="form-section">
-          <LoginForm />
+          <LoginForm onLoginSuccess={handleLoginSuccess} />
         </div>
       </div>
     </>

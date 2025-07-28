@@ -1,11 +1,17 @@
-import React, { createContext, useContext, useEffect, useState, useCallback } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  useCallback,
+} from "react";
 import fetchTickets from "../services/fetchTickets";
 
 const TicketsContext = createContext();
 
 export function TicketsProvider({ children }) {
   const [tickets, setTickets] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const loadTickets = useCallback(async () => {
@@ -21,12 +27,10 @@ export function TicketsProvider({ children }) {
     }
   }, []);
 
-  useEffect(() => {
-    loadTickets();
-  }, [loadTickets]);
-
   return (
-    <TicketsContext.Provider value={{ tickets, loading, error, reloadTickets: loadTickets }}>
+    <TicketsContext.Provider
+      value={{ tickets, loading, error, reloadTickets: loadTickets }}
+    >
       {children}
     </TicketsContext.Provider>
   );
@@ -34,4 +38,4 @@ export function TicketsProvider({ children }) {
 
 export function useTickets() {
   return useContext(TicketsContext);
-} 
+}

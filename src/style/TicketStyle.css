@@ -2,11 +2,14 @@
   display: flex;
   gap: 10px;
   margin-top: 20px;
+  overflow-x: auto;
 }
 
 .column {
   border: 1px solid #555;
-  width: 100%; 
+  width: 220px;
+  min-width: 220px;
+  max-width: 220px;
   padding: 10px 10px 10px 10px;
   border-radius: 8px;
   background-color: #1e1e1e;
@@ -26,6 +29,8 @@
   padding: 8px;
   cursor: pointer;
   border: 1px solid #333;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .ticket-card:hover {
@@ -53,8 +58,30 @@
   padding: 4px;
 }
 
+.ticket-title,
+.ticket-description,
+.ticket-client {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  max-width: 100%;
+}
+
+/* If you want to allow wrapping instead, comment out the white-space: nowrap above and use: */
+/*
+.ticket-title, .ticket-description, .ticket-client {
+  word-break: break-word;
+  white-space: normal;
+}
+*/
+
 .no-tickets {
   color: #aaa;
   text-align: center;
   font-style: italic;
+}
+
+.counter-number {
+  font-size: 1.8em;
 }

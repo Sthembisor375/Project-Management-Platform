@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTickets } from "../../contexts/TicketsContext";
 import PopUp from "../../components/PopUp";
-import CreateButton from "../../components/CreateButton";
+import CreateTicketButton from "../../components/CreateTicketButton";
 import "../../style/ticketStyle.css";
 
 function Tickets() {
@@ -34,29 +34,32 @@ function Tickets() {
   return (
     <div>
       <h2>Tickets</h2>
-      <CreateButton onTicketCreated={reloadTickets} />
+      <CreateTicketButton onTicketCreated={reloadTickets} />
       {loading ? (
         <div>Loading tickets...</div>
       ) : error ? (
         <div style={{ color: "red" }}>{error}</div>
       ) : (
         <div className="ticket-columns">
-          {statusColumns.map(col => (
+          {statusColumns.map((col) => (
             <div className="column" key={col.key}>
               <h4>{col.label}</h4>
-              {tickets.filter(ticket => ticket.status === col.key).length === 0 ? (
+              {tickets.filter((ticket) => ticket.status === col.key).length ===
+              0 ? (
                 <div className="no-tickets">No tickets</div>
               ) : (
                 tickets
-                  .filter(ticket => ticket.status === col.key)
-                  .map(ticket => (
-                    <div 
-                      key={ticket._id} 
+                  .filter((ticket) => ticket.status === col.key)
+                  .map((ticket) => (
+                    <div
+                      key={ticket._id}
                       className="ticket-card"
                       onClick={() => handleTicketClick(ticket)}
                     >
                       <div className="ticket-title">{ticket.title}</div>
-                      <div className="ticket-description">{ticket.description}</div>
+                      <div className="ticket-description">
+                        {ticket.description}
+                      </div>
                       <div className="ticket-client">{ticket.client}</div>
                     </div>
                   ))
@@ -66,7 +69,11 @@ function Tickets() {
         </div>
       )}
       {isPopUpOpen && (
-        <PopUp onClose={closePopUp} ticket={selectedTicket} />
+        <PopUp
+          onClose={closePopUp}
+          ticket={selectedTicket}
+          reloadTickets={reloadTickets}
+        />
       )}
     </div>
   );

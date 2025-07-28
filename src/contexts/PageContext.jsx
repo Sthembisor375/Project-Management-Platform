@@ -14,6 +14,6 @@ function PageProvider({ children }) {
 
 function usePage() {
   return useContext(PageContext);
-} 
+}
 
-export {PageProvider, usePage};
+export { PageProvider, usePage };

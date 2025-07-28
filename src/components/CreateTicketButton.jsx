@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import PropTypes from "prop-types";
+import { useClients } from "../contexts/ClientsContext";
 
 function TicketForm({ onTicketCreated }) {
   const [title, setTitle] = useState("");
@@ -10,6 +11,7 @@ function TicketForm({ onTicketCreated }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
+  const { clients, loading: clientsLoading } = useClients();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,13 +24,15 @@ function TicketForm({ onTicketCreated }) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({ title, description, status, client }),
       });
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error || errorData.message || "Failed to create ticket");
+        throw new Error(
+          errorData.error || errorData.message || "Failed to create ticket"
+        );
       }
       setTitle("");
       setDescription("");
@@ -53,7 +57,7 @@ function TicketForm({ onTicketCreated }) {
             className="form-control"
             placeholder="Ticket title"
             value={title}
-            onChange={e => setTitle(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
             required
           />
         </div>
@@ -64,17 +68,17 @@ function TicketForm({ onTicketCreated }) {
             className="form-control"
             placeholder="Ticket description"
             value={description}
-            onChange={e => setDescription(e.target.value)}
+            onChange={(e) => setDescription(e.target.value)}
             required
           />
         </div>
-        
+
         <div className="form-group">
           <label>Status</label>
           <select
             className="form-control"
             value={status}
-            onChange={e => setStatus(e.target.value)}
+            onChange={(e) => setStatus(e.target.value)}
             required
           >
             <option value="backlog">Backlog</option>
@@ -89,20 +93,31 @@ function TicketForm({ onTicketCreated }) {
           <select
             className="form-control"
             value={client}
-            onChange={e => setClient(e.target.value)}
+            onChange={(e) => setClient(e.target.value)}
             required
+            disabled={clientsLoading}
           >
             <option value="">Select a client</option>
-            <option value="Client 1">Client 1</option>
-            <option value="Client 2">Client 2</option>
-            <option value="Client 3">Client 3</option>
+            {clientsLoading ? (
+              <option value="" disabled>
+                Loading clients...
+              </option>
+            ) : (
+              clients.map((client) => (
+                <option key={client._id} value={client.username}>
+                  {client.username}
+                </option>
+              ))
+            )}
           </select>
         </div>
         <button type="submit" className="create-ticket-btn" disabled={loading}>
-          {loading ? "Creating..." : "Create Ticket"}
+          {loading ? "Loading..." : "Create Ticket"}
         </button>
         {error && <div style={{ color: "red", marginTop: 8 }}>{error}</div>}
-        {success && <div style={{ color: "green", marginTop: 8 }}>Ticket created!</div>}
+        {success && (
+          <div style={{ color: "green", marginTop: 8 }}>Ticket created!</div>
+        )}
       </form>
     </div>
   );
@@ -112,7 +127,7 @@ TicketForm.propTypes = {
   onTicketCreated: PropTypes.func,
 };
 
-function CreateButton({ onTicketCreated }) {
+function CreateTicketButton({ onTicketCreated }) {
   return (
     <Popover className="relative create-ticket-container">
       <PopoverButton className="create-ticket-btn">
@@ -137,8 +152,8 @@ function CreateButton({ onTicketCreated }) {
   );
 }
 
-CreateButton.propTypes = {
+CreateTicketButton.propTypes = {
   onTicketCreated: PropTypes.func,
 };
 
-export default CreateButton;
+export default CreateTicketButton;

@@ -13,7 +13,7 @@
   min-height: 100%;
   overflow-x: auto;
   padding: 24px 24px 0px 50px;
-  max-width:90%;
+  max-width: 90%;
   max-height: 80vh;
   overflow-y: auto;
 }
@@ -54,7 +54,7 @@
 }
 
 .revisions-card {
-  background-color: #00B7EB;
+  background-color: #00b7eb;
 }
 
 .client-review-card {

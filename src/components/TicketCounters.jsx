@@ -25,7 +25,9 @@ function TicketCounters() {
             </svg>
           </span>
           <div>Completed</div>
-          <number>{tickets.filter(ticket => ticket.status === "complete").length}</number>
+          <number className="counter-number">
+            {tickets.filter((ticket) => ticket.status === "complete").length}
+          </number>
         </div>
 
         <div className="status-card in-progress-card">
@@ -42,7 +44,9 @@ function TicketCounters() {
             </svg>
           </span>
           <div>In Progress</div>
-          <number>{tickets.filter(ticket => ticket.status === "in_progress").length}</number>
+          <number className="counter-number">
+            {tickets.filter((ticket) => ticket.status === "in_progress").length}
+          </number>
         </div>
 
         <div className="status-card backlog-card">
@@ -59,34 +63,50 @@ function TicketCounters() {
             </svg>
           </span>
           <div>Backlog</div>
-          <number>{tickets.filter(ticket => ticket.status === "backlog").length}</number>
+          <number className="counter-number">
+            {tickets.filter((ticket) => ticket.status === "backlog").length}
+          </number>
         </div>
 
         <div className="status-card revisions-card">
           <span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-slash" viewBox="0 0 16 16">
-  <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0"/>
-</svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-code-slash"
+              viewBox="0 0 16 16"
+            >
+              <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0" />
+            </svg>
           </span>
           <div>Revisions</div>
-          <number>{tickets.filter(ticket => ticket.status === "revisions").length}</number>
+          <number className="counter-number">
+            {tickets.filter((ticket) => ticket.status === "revisions").length}
+          </number>
         </div>
 
         <div className="status-card client-review-card">
           <span>
-          <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        fill="currentColor"
-        className="bi bi-people-fill"
-        viewBox="0 0 16 16"
-      >
-        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
-      </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              className="bi bi-people-fill"
+              viewBox="0 0 16 16"
+            >
+              <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+            </svg>
           </span>
           <div>Client Review</div>
-          <number>{tickets.filter(ticket => ticket.status === "client_review").length}</number>
+          <number className="counter-number">
+            {
+              tickets.filter((ticket) => ticket.status === "client_review")
+                .length
+            }
+          </number>
         </div>
       </div>
     </>
