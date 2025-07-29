@@ -1,8 +1,12 @@
 import { useTickets } from "../contexts/TicketsContext";
 import { useEffect } from "react";
+import PropTypes from "prop-types";
 
-function TicketCounters() {
+function TicketCounters({ tickets: propTickets }) {
   const { tickets, loading, error, reloadTickets } = useTickets();
+
+  // Use prop tickets if provided, otherwise use context tickets
+  const ticketsToCount = propTickets || tickets;
 
   useEffect(() => {
     reloadTickets();
@@ -26,7 +30,7 @@ function TicketCounters() {
           </span>
           <div>Completed</div>
           <number className="counter-number">
-            {tickets.filter((ticket) => ticket.status === "complete").length}
+            {ticketsToCount.filter((ticket) => ticket.status === "complete").length}
           </number>
         </div>
 
@@ -45,7 +49,7 @@ function TicketCounters() {
           </span>
           <div>In Progress</div>
           <number className="counter-number">
-            {tickets.filter((ticket) => ticket.status === "in_progress").length}
+            {ticketsToCount.filter((ticket) => ticket.status === "in_progress").length}
           </number>
         </div>
 
@@ -64,7 +68,7 @@ function TicketCounters() {
           </span>
           <div>Backlog</div>
           <number className="counter-number">
-            {tickets.filter((ticket) => ticket.status === "backlog").length}
+            {ticketsToCount.filter((ticket) => ticket.status === "backlog").length}
           </number>
         </div>
 
@@ -83,7 +87,7 @@ function TicketCounters() {
           </span>
           <div>Revisions</div>
           <number className="counter-number">
-            {tickets.filter((ticket) => ticket.status === "revisions").length}
+            {ticketsToCount.filter((ticket) => ticket.status === "revisions").length}
           </number>
         </div>
 
@@ -103,7 +107,7 @@ function TicketCounters() {
           <div>Client Review</div>
           <number className="counter-number">
             {
-              tickets.filter((ticket) => ticket.status === "client_review")
+              ticketsToCount.filter((ticket) => ticket.status === "client_review")
                 .length
             }
           </number>
@@ -112,5 +116,10 @@ function TicketCounters() {
     </>
   );
 }
+
+// Add PropTypes for type checking
+TicketCounters.propTypes = {
+  tickets: PropTypes.array
+};
 
 export default TicketCounters;

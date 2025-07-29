@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { useClients } from "../contexts/ClientsContext";
+import { useUsers } from "../contexts/UsersContext";
 import "../style/popupStyle.css";
 
 export default function PopUp({ onClose, children, ticket, reloadTickets }) {
@@ -9,11 +10,13 @@ export default function PopUp({ onClose, children, ticket, reloadTickets }) {
     description: ticket?.description || "",
     status: ticket?.status || "",
     client: ticket?.client || "",
+    assignedTo: ticket?.assignedTo || "",
   });
   const [loading, setLoading] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const { isClient, isAdmin } = useAuth();
   const { clients, loading: clientsLoading } = useClients();
+  const { users, loading: usersLoading } = useUsers();
 
   // Debug logging for role detection
   console.log('PopUp - AuthContext values:', { isClient, isAdmin });
@@ -154,6 +157,12 @@ export default function PopUp({ onClose, children, ticket, reloadTickets }) {
                     : form.client}
                 </div>
               </div>
+              <div className="fieldStyle">
+                <label className="labelStyle">Assigned To:</label>
+                <div className="valueStyle">
+                  {form.assignedTo || "Not assigned"}
+                </div>
+              </div>
               <div className="ticket-buttons">
                 <button
                   type="button"
@@ -283,6 +292,38 @@ export default function PopUp({ onClose, children, ticket, reloadTickets }) {
                       {clients.map((client) => (
                         <option key={client._id} value={client.username}>
                           {client.name || client.username || client.email}
+                        </option>
+                      ))}
+                    </>
+                  )}
+                </select>
+                )}
+              </div>
+              <div className="fieldStyle">
+                <label className="labelStyle">Assigned To:</label>
+                {isClient ? (
+                  <div className="valueStyle" style={{ width: "100%", padding: "8px", backgroundColor: "#2a2a2a", border: "1px solid #444", borderRadius: "4px" }}>
+                    {form.assignedTo || "Not assigned"}
+                  </div>
+                ) : (
+                <select
+                  className="valueStyle"
+                  name="assignedTo"
+                  value={form.assignedTo}
+                  onChange={handleChange}
+                  style={{ width: "100%" }}
+                  required
+                >
+                  {usersLoading ? (
+                    <option value="">Loading admins...</option>
+                  ) : users.length === 0 ? (
+                    <option value="">No admins found.</option>
+                  ) : (
+                    <>
+                      <option value="">Select a user</option>
+                      {users.map((user) => (
+                        <option key={user._id} value={user.username}>
+                          {user.username}
                         </option>
                       ))}
                     </>
