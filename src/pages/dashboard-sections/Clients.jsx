@@ -1,7 +1,7 @@
 import CreateClientButton from "../../components/CreateClientButton";
 import { useClients } from "../../contexts/ClientsContext";
 import Loader from "../../components/Loader";
-import "../../style/clientStyle.css";
+import "../../style/ClientStyle.css";
 
 function ClientCards() {
   const { clients, loading, error } = useClients();

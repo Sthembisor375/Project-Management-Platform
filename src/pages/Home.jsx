@@ -8,7 +8,7 @@ import Tickets from "./dashboard-sections/Tickets";
 import Clients from "./dashboard-sections/Clients";
 import Settings from "./dashboard-sections/Settings";
 import { Routes, Route } from "react-router-dom";
-import "../style/home.css";
+import "../style/Home.css";
 import "../assets/search.png";
 
 function Home() {
@@ -26,7 +26,7 @@ function Home() {
             <Route
               path="dashboard"
               element={
-                <ProtectedRoute allowedRoles={['client', 'user']}>
+                <ProtectedRoute allowedRoles={["client", "user"]}>
                   <Dashboard />
                 </ProtectedRoute>
               }
@@ -34,7 +34,7 @@ function Home() {
             <Route
               path="workload"
               element={
-                <ProtectedRoute allowedRoles={['user']}>
+                <ProtectedRoute allowedRoles={["user"]}>
                   <Workload />
                 </ProtectedRoute>
               }
@@ -42,7 +42,7 @@ function Home() {
             <Route
               path="tickets"
               element={
-                <ProtectedRoute allowedRoles={['client', 'user']}>
+                <ProtectedRoute allowedRoles={["client", "user"]}>
                   <Tickets />
                 </ProtectedRoute>
               }
@@ -50,7 +50,7 @@ function Home() {
             <Route
               path="clients"
               element={
-                <ProtectedRoute allowedRoles={['user']}>
+                <ProtectedRoute allowedRoles={["user"]}>
                   <Clients />
                 </ProtectedRoute>
               }
@@ -58,7 +58,7 @@ function Home() {
             <Route
               path="settings"
               element={
-                <ProtectedRoute allowedRoles={['client', 'user']}>
+                <ProtectedRoute allowedRoles={["client", "user"]}>
                   <Settings />
                 </ProtectedRoute>
               }

@@ -1,4 +1,4 @@
-import "../style/sideBarStyle.css";
+import "../style/SideBarStyle.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { usePage } from "../contexts/PageContext.jsx";
@@ -110,11 +110,11 @@ function SideBar({ collapsed }) {
   ];
 
   // Filter navigation items based on user role
-  const filteredNavItems = navItems.filter(item => {
+  const filteredNavItems = navItems.filter((item) => {
     if (isClient) {
-      return item.roles.includes('client');
+      return item.roles.includes("client");
     } else if (isAdmin) {
-      return item.roles.includes('user');
+      return item.roles.includes("user");
     }
     return false; // If user role is not determined, show no items
   });
@@ -152,7 +152,6 @@ function SideBar({ collapsed }) {
           ))}
         </ul>
       </nav>
-      
     </aside>
   );
 }

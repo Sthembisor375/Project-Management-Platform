@@ -3,7 +3,7 @@ import Loader from "../../components/Loader";
 import { useTickets } from "../../contexts/TicketsContext";
 import { useState } from "react";
 import PopUp from "../../components/PopUp";
-import "../../style/dashboardStyle.css";
+import "../../style/DashboardStyle.css";
 import TicketCounters from "../../components/TicketCounters";
 
 function Dashboard() {

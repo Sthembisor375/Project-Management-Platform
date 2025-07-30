@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useTickets } from "../../contexts/TicketsContext";
 import PopUp from "../../components/PopUp";
 import CreateTicketButton from "../../components/CreateTicketButton";
-import "../../style/ticketStyle.css";
+import "../../style/TicketStyle.css";
 
 function Tickets() {
   const { tickets, loading, error, reloadTickets } = useTickets();
