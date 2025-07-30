@@ -74,13 +74,14 @@
 .topbar-actions {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 15px;
   margin-left: auto;
+  padding-right: 10px;
 }
 
 .topbar-bell {
   color: #fff;
-  font-size: 2rem;
+  /* font-size: 2rem; */
   cursor: pointer;
   opacity: 0.85;
   transition: opacity 0.2s;
@@ -125,6 +126,6 @@
 .topbar-logout-btn {
   background-color: #1e1e1e;
   border: 1px solid #474747;
-  margin: 10px 20px 10px 40px;
+  margin: 10px 10px 10px 20px;
   padding: 5px 15px 5px 15px;
 }

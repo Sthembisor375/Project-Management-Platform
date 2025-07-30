@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import PropTypes from "prop-types";
+import { API_ENDPOINTS } from "../config/api";
 
 function ClientForm({ onClientCreated }) {
   const [username, setUsername] = useState("");
@@ -16,19 +17,12 @@ function ClientForm({ onClientCreated }) {
     setError(null);
     setSuccess(false);
     try {
-      const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5005/api/auth/register", {
+      const response = await fetch(API_ENDPOINTS.AUTH.REGISTER, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({
-          username,
-          email,
-          password,
-          role: "client",
-        }),
+        body: JSON.stringify({ username, email, password, role: "client" }),
       });
       if (!response.ok) {
         const errorData = await response.json();

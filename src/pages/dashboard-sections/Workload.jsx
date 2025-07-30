@@ -18,7 +18,9 @@ function Workload() {
   }, [reloadTickets]);
 
   // Filter tickets to show only those assigned to the current user
-  const assignedTickets = tickets.filter(ticket => ticket.assignedTo === username);
+  const assignedTickets = tickets.filter(
+    (ticket) => ticket.assignedTo === username
+  );
 
   const handleTicketClick = (ticket) => {
     setSelectedTicket(ticket);
@@ -45,15 +47,15 @@ function Workload() {
           <>
             <table className="table table-striped table-dark dashboard-ticket-table">
               <colgroup>
-                <col style={{ width: "5%" }} />
-                <col style={{ width: "35%" }} />
+                <col style={{ width: "10%" }} />
+                <col style={{ width: "30%" }} />
                 <col style={{ width: "20%" }} />
                 <col style={{ width: "20%" }} />
                 <col style={{ width: "20%" }} />
               </colgroup>
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  <th scope="col">No.</th>
                   <th scope="col">Title</th>
                   <th scope="col">Status</th>
                   <th scope="col">Client Name</th>
@@ -63,7 +65,10 @@ function Workload() {
               <tbody>
                 {assignedTickets.length === 0 ? (
                   <tr>
-                    <td colSpan="5" style={{ textAlign: "center", padding: "20px" }}>
+                    <td
+                      colSpan="5"
+                      style={{ textAlign: "center", padding: "20px" }}
+                    >
                       No tickets assigned to you
                     </td>
                   </tr>

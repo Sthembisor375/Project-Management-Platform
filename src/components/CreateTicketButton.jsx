@@ -3,6 +3,7 @@ import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import PropTypes from "prop-types";
 import { useClients } from "../contexts/ClientsContext";
 import { useUsers } from "../contexts/UsersContext";
+import { API_ENDPOINTS } from "../config/api";
 
 function TicketForm({ onTicketCreated }) {
   const [title, setTitle] = useState("");
@@ -23,13 +24,19 @@ function TicketForm({ onTicketCreated }) {
     setSuccess(false);
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5005/api/tickets/", {
+      const response = await fetch(API_ENDPOINTS.TICKETS.BASE, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ title, description, status, client, assignedTo }),
+        body: JSON.stringify({
+          title,
+          description,
+          status,
+          client,
+          assignedTo,
+        }),
       });
       if (!response.ok) {
         const errorData = await response.json();

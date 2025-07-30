@@ -1,16 +1,30 @@
+import { API_ENDPOINTS } from "../config/api";
+
 export async function fetchTickets() {
-  const token = localStorage.getItem("token");
-  const response = await fetch("http://localhost:5005/api/tickets/", {
-    method: "GET",
-    headers: {
-      "Authorization": `Bearer ${token}`
+  try {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      throw new Error("No authentication token found");
     }
-  });
-  if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(errorData.error || errorData.message || "Failed to fetch tickets");
+
+    const response = await fetch(API_ENDPOINTS.TICKETS.BASE, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(
+        errorData.error || errorData.message || "Failed to fetch tickets"
+      );
+    }
+    return response.json();
+  } catch (error) {
+    console.error("Error fetching tickets:", error);
+    throw error;
   }
-  return response.json();
 }
 
 export default fetchTickets;
