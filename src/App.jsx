@@ -1,8 +1,7 @@
-
-import "./style/loginPageStyle.css";
-import "./style/dashboardStyle.css";
-import "./style/clientStyle.css";
-import "./style/ticketStyle.css";
+import "./style/LoginPageStyle.css";
+import "./style/DashboardStyle.css";
+import "./style/ClientStyle.css";
+import "./style/TicketStyle.css";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import { Routes, Route } from "react-router-dom";
@@ -14,12 +13,14 @@ function App() {
     <Routes>
       <Route path="/" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
-      <Route path="/home/*" element={
-        <RequireAuth>
-          <Home />
-        </RequireAuth>
-        } />
-      
+      <Route
+        path="/home/*"
+        element={
+          <RequireAuth>
+            <Home />
+          </RequireAuth>
+        }
+      />
     </Routes>
   );
 }

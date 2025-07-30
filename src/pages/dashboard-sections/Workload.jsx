@@ -5,7 +5,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useEffect, useState } from "react";
 import Loader from "../../components/Loader";
 import PopUp from "../../components/PopUp";
-import "../../style/dashboardStyle.css";
+import "../../style/DashboardStyle.css";
 
 function Workload() {
   const { reloadTickets, tickets, loading, error } = useTickets();
