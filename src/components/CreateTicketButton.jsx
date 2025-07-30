@@ -144,7 +144,7 @@ function TicketForm({ onTicketCreated }) {
             )}
           </select>
         </div>
-        <button type="submit" className="create-ticket-btn" disabled={loading}>
+        <button type="submit" className="create-btn" disabled={loading}>
           {loading ? "Loading..." : "Create Ticket"}
         </button>
         {error && <div style={{ color: "red", marginTop: 8 }}>{error}</div>}
@@ -163,7 +163,7 @@ TicketForm.propTypes = {
 function CreateTicketButton({ onTicketCreated }) {
   return (
     <Popover className="relative create-ticket-container">
-      <PopoverButton className="create-ticket-btn">
+      <PopoverButton className="create-btn">
         Create Ticket
         <span>
           <svg
