@@ -8,6 +8,7 @@ import SignupPage from "./pages/SignupPage";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import RequireAuth from "./contexts/RequireAuth";
+
 function App() {
   return (
     <Routes>

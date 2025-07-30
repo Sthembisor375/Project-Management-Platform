@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useAuth } from "../contexts/AuthContext";
+import { API_ENDPOINTS } from "../config/api";
 
 function LoginForm({ onLoginSuccess }) {
   const [email, setEmail] = useState("");
@@ -15,9 +16,9 @@ function LoginForm({ onLoginSuccess }) {
     e.preventDefault();
     setError("");
     try {
-      const res = await fetch("http://localhost:5005/api/auth/login", {
+      const res = await fetch(API_ENDPOINTS.AUTH.LOGIN, {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
       const data = await res.json();

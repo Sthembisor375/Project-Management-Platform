@@ -1,10 +1,5 @@
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  useCallback,
-} from "react";
+import React, { createContext, useContext, useState, useCallback } from "react";
+import { API_ENDPOINTS } from "../config/api";
 
 const ClientsContext = createContext();
 
@@ -18,8 +13,14 @@ export function ClientsProvider({ children }) {
     setError(null);
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5005/api/users/clients", {
+      if (!token) {
+        throw new Error("No authentication token found");
+      }
+
+      const response = await fetch(API_ENDPOINTS.USERS.CLIENTS, {
+        method: "GET",
         headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       });

@@ -2,16 +2,20 @@ import { useState } from "react";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import PropTypes from "prop-types";
 import { useClients } from "../contexts/ClientsContext";
+import { useUsers } from "../contexts/UsersContext";
+import { API_ENDPOINTS } from "../config/api";
 
 function TicketForm({ onTicketCreated }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [client, setClient] = useState("");
   const [status, setStatus] = useState("backlog");
+  const [assignedTo, setAssignedTo] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
   const { clients, loading: clientsLoading } = useClients();
+  const { users, loading: usersLoading } = useUsers();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,13 +24,19 @@ function TicketForm({ onTicketCreated }) {
     setSuccess(false);
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5005/api/tickets/", {
+      const response = await fetch(API_ENDPOINTS.TICKETS.BASE, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ title, description, status, client }),
+        body: JSON.stringify({
+          title,
+          description,
+          status,
+          client,
+          assignedTo,
+        }),
       });
       if (!response.ok) {
         const errorData = await response.json();
@@ -38,6 +48,7 @@ function TicketForm({ onTicketCreated }) {
       setDescription("");
       setStatus("backlog");
       setClient("");
+      setAssignedTo("");
       setSuccess(true);
       if (onTicketCreated) onTicketCreated();
     } catch (err) {
@@ -106,6 +117,28 @@ function TicketForm({ onTicketCreated }) {
               clients.map((client) => (
                 <option key={client._id} value={client.username}>
                   {client.username}
+                </option>
+              ))
+            )}
+          </select>
+        </div>
+        <div className="form-group">
+          <label>Assigned To</label>
+          <select
+            className="form-control"
+            value={assignedTo}
+            onChange={(e) => setAssignedTo(e.target.value)}
+            disabled={usersLoading}
+          >
+            <option value="">Select a user</option>
+            {usersLoading ? (
+              <option value="" disabled>
+                Loading admins...
+              </option>
+            ) : (
+              users.map((user) => (
+                <option key={user._id} value={user.username}>
+                  {user.username}
                 </option>
               ))
             )}
