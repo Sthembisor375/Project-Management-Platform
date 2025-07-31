@@ -80,7 +80,6 @@ function TicketForm({ onTicketCreated }) {
             placeholder="Ticket description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            required
           />
         </div>
 
