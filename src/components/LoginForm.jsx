@@ -46,7 +46,7 @@ function LoginForm({ onLoginSuccess }) {
             aria-describedby="emailHelp"
             placeholder="Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value.toLowerCase())}
             required
           />
         </div>

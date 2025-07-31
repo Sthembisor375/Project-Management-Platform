@@ -78,7 +78,7 @@ function ClientForm({ onClientCreated }) {
             required
           />
         </div>
-        <button type="submit" className="create-client-btn" disabled={loading}>
+        <button type="submit" className="create-btn" disabled={loading}>
           {loading ? "Loading..." : "Create Client"}
         </button>
         {error && <div style={{ color: "red", marginTop: 8 }}>{error}</div>}
@@ -99,7 +99,7 @@ ClientForm.propTypes = {
 function CreateClientButton({ onClientCreated }) {
   return (
     <Popover className="relative create-client-container">
-      <PopoverButton className="create-client-btn">
+      <PopoverButton className="create-btn">
         Create Client
         <span>
           <svg

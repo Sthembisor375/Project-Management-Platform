@@ -10,6 +10,7 @@ function Dashboard() {
   const { tickets, loading, error, reloadTickets } = useTickets();
   const [selectedTicket, setSelectedTicket] = useState(null);
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+  const [selectedStatus, setSelectedStatus] = useState(null);
 
   const handleTicketClick = (ticket) => {
     setSelectedTicket(ticket);
@@ -21,11 +22,20 @@ function Dashboard() {
     setSelectedTicket(null);
   };
 
+  // Filter tickets by selected status if set
+  const filteredTickets = selectedStatus
+    ? tickets.filter((ticket) => ticket.status === selectedStatus)
+    : tickets;
+
   return (
     <div>
       <h2>Dashboard</h2>
       <CreateTicketButton onTicketCreated={reloadTickets} />
-      <TicketCounters tickets={tickets} />
+      <TicketCounters
+        tickets={tickets}
+        selectedStatus={selectedStatus}
+        onStatusSelect={setSelectedStatus}
+      />
       <h3>Tickets</h3>
       <div className="table-container">
         {loading ? (
@@ -50,7 +60,7 @@ function Dashboard() {
                 </tr>
               </thead>
               <tbody>
-                {tickets.map((ticket, idx) => (
+                {filteredTickets.map((ticket, idx) => (
                   <tr
                     key={ticket._id || idx}
                     className="dashboard-ticket-row"

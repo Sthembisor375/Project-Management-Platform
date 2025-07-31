@@ -12,6 +12,7 @@ function Workload() {
   const { username } = useAuth();
   const [selectedTicket, setSelectedTicket] = useState(null);
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+  const [selectedStatus, setSelectedStatus] = useState(null);
 
   useEffect(() => {
     reloadTickets();
@@ -21,6 +22,11 @@ function Workload() {
   const assignedTickets = tickets.filter(
     (ticket) => ticket.assignedTo === username
   );
+
+  // Further filter by status if selected
+  const filteredTickets = selectedStatus
+    ? assignedTickets.filter((ticket) => ticket.status === selectedStatus)
+    : assignedTickets;
 
   const handleTicketClick = (ticket) => {
     setSelectedTicket(ticket);
@@ -36,7 +42,11 @@ function Workload() {
     <div>
       <h2>Workload</h2>
       <CreateTicketButton onTicketCreated={reloadTickets} />
-      <TicketCounters tickets={assignedTickets} />
+      <TicketCounters
+        tickets={assignedTickets}
+        selectedStatus={selectedStatus}
+        onStatusSelect={setSelectedStatus}
+      />
       <h3>My Assigned Tickets</h3>
       <div className="table-container">
         {loading ? (
@@ -63,7 +73,7 @@ function Workload() {
                 </tr>
               </thead>
               <tbody>
-                {assignedTickets.length === 0 ? (
+                {filteredTickets.length === 0 ? (
                   <tr>
                     <td
                       colSpan="5"
@@ -73,7 +83,7 @@ function Workload() {
                     </td>
                   </tr>
                 ) : (
-                  assignedTickets.map((ticket, idx) => (
+                  filteredTickets.map((ticket, idx) => (
                     <tr
                       key={ticket._id || idx}
                       className="dashboard-ticket-row"
