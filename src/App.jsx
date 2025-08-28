@@ -7,6 +7,8 @@ import SignupPage from "./pages/SignupPage";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import RequireAuth from "./contexts/RequireAuth";
+import OTPConfirmPage from "./pages/OTPConfirmPage";
+import EmailConfirmPage from "./pages/EmailConfirmPage";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         }
       />
     </Routes>
+    // <OTPConfirmPage />
+    // <EmailConfirmPage />
   );
 }
 
