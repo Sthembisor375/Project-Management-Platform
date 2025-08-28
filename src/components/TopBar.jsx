@@ -61,7 +61,7 @@ function TopBar({ collapsed, onToggleSidebar }) {
           </svg>
         )}
       </span>
-      <span className="topbar-title">Project</span>
+      <span className="topbar-title">FreeFlow</span>
       <div className="topbar-search">
         <span className="topbar-search-icon">
           {/* Search icon */}
